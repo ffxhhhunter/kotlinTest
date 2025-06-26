@@ -1,17 +1,9 @@
 fun main() {
-    println(assemble("first", 49339))
+    multipleChoices(1, 10, 1939, 300)
 }
 
-fun assemble(data: String, payload: Int): String {
-    var res = ""
-    var str = (data.hashCode() * payload).toString()
-    str.substring(1, str.length)
-    val arr = str.split("")
-    for (i in arr) {
-        if (i == "" || i == " " || i == "-") {
-            continue
-        }
-        res += i.toInt().toChar()
+fun multipleChoices(vararg choices: Int) {
+    for (i in choices) {
+        println("Choice: $i")
     }
-    return res
 }
