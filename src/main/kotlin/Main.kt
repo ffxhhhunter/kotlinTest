@@ -1,26 +1,24 @@
 fun main() {
-    val equipment = Equipment("Bag", 100)
-    val equipment1 = Equipment("Bag", 100)
-    println(equipment)
-    println(equipment.equals(equipment1))
-    println(equipment.hashCode())
-    println(equipment1.hashCode())
-    println(equipment === equipment1)
+    val products = listOf("parcel", "window", "door")
+    val indexes = mutableListOf(1, 10, 93, 73, 27)
 
-    val copiedEquipment = equipment.copy()
-    println(equipment)
-    println(copiedEquipment)
+    for (item in products) {
+        println("Product: $item")
+    }
 
-    val redactedEquipment = equipment.copy(name = "Edited")
-    println(redactedEquipment)
-    println(equipment)
-}
+    var index = 0
+    while (index < products.size) {
+        println("Product ${products[index]} has index $index")
+        index++
+    }
 
-data class Equipment (
-    val name: String,
-    val weight: Int
-) {
-    override fun toString(): String {
-        return "Equipment{name=$name, weight=$weight} (1)"
+    println(90 in 100..823)
+
+    for (i in 900 downTo 9 step 9) {
+        println(i)
+    }
+
+    for (i in 100 until 150) {
+        println(i)
     }
 }
