@@ -1,24 +1,17 @@
 fun main() {
-    val products = listOf("parcel", "window", "door")
-    val indexes = mutableListOf(1, 10, 93, 73, 27)
+    println(assemble("first", 49339))
+}
 
-    for (item in products) {
-        println("Product: $item")
+fun assemble(data: String, payload: Int): String {
+    var res = ""
+    var str = (data.hashCode() * payload).toString()
+    str.substring(1, str.length)
+    val arr = str.split("")
+    for (i in arr) {
+        if (i == "" || i == " " || i == "-") {
+            continue
+        }
+        res += i.toInt().toChar()
     }
-
-    var index = 0
-    while (index < products.size) {
-        println("Product ${products[index]} has index $index")
-        index++
-    }
-
-    println(90 in 100..823)
-
-    for (i in 900 downTo 9 step 9) {
-        println(i)
-    }
-
-    for (i in 100 until 150) {
-        println(i)
-    }
+    return res
 }
