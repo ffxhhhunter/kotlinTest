@@ -29,13 +29,13 @@ class Opinion(val importance: Int, val voters: Int) {
 
     constructor(): this(0, 0)
 
-    constructor(
-        importance: Int,
-        voters: Int,
-        description: String
-    ): this(importance, voters) {
-        this.description = description
-    }
+//    constructor(
+//        importance: Int,
+//        voters: Int,
+//        description: String
+//    ): this(importance, voters) {
+//        this.description = description
+//    }
 
     constructor(
         importance: Int,
@@ -45,13 +45,13 @@ class Opinion(val importance: Int, val voters: Int) {
         this.image = image
     }
 
-    constructor(
-        importance: Int,
-        voters: Int,
-        other: Boolean
-    ): this(importance, voters) {
-        this.other = other
-    }
+//    constructor(
+//        importance: Int,
+//        voters: Int,
+//        other: Boolean
+//    ): this(importance, voters) {
+//        this.other = other
+//    }
 
     constructor(
         importance: Int,
