@@ -1,37 +1,16 @@
 import java.util.stream.Collectors
 
 fun main() {
-    println(lengthOfLongestSubstring("asjrgapa"))
+    println(findMedianSortedArrays(intArrayOf(1, 3), intArrayOf(2)))
 }
 
-fun lengthOfLongestSubstring(s: String): Int {
-    val charSet: MutableList<String> = mutableListOf()
-    var previousCharSet = ""
+fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
+    val sortedArray = (nums1 + nums2).sorted()
 
-    if (s.length <= 1) {
-        return s.length
+    if (sortedArray.size % 2 == 0) {
+        return (sortedArray.get((sortedArray.size / 2) - 1).toDouble() +
+                sortedArray.get(sortedArray.size / 2).toDouble()) / 2
+    } else {
+        return sortedArray.get(((sortedArray.size / 2.0) - 0.5).toInt()).toDouble()
     }
-
-    for (a in 0 until s.length) {
-        var currentSubstring = ""
-        for (b in a until s.length) {
-            var currentChar = s.get(b)
-            if (!currentSubstring.contains(currentChar)) {
-                currentSubstring += currentChar
-            } else {
-                break
-            }
-        }
-        charSet.add(currentSubstring)
-    }
-
-    if (charSet.isNotEmpty()) {
-        for (set in charSet) {
-            if (set.length > previousCharSet.length) {
-                previousCharSet = set
-            }
-        }
-    }
-
-    return previousCharSet.length
 }
