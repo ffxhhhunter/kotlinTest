@@ -1,47 +1,37 @@
 import java.util.stream.Collectors
 
 fun main() {
-    println(solution(listOf("eat", "tba", "ate", "tan", "tea", "nat", "bat")))
+    println(lengthOfLongestSubstring("asjrgapa"))
 }
 
-fun solution(input: List<String>): List<List<String>> {
-    val res: MutableList<MutableList<String>> = mutableListOf()
+fun lengthOfLongestSubstring(s: String): Int {
+    val charSet: MutableList<String> = mutableListOf()
+    var previousCharSet = ""
 
-    for (str in input) {
-        if (res.isEmpty()) {
-            res.add(mutableListOf(str))
-            continue
-        }
+    if (s.length <= 1) {
+        return s.length
+    }
 
-        val chars: MutableList<String> = mutableListOf()
-        for (char in str.substring(0)) {
-            chars.add("$char")
-        }
-
-        for (e in res) {
-            var coincidence = 0
-            for (char in e.get(0)) {
-                if (chars.contains("$char")) {
-                    coincidence++
-                }
-            }
-            if (coincidence == chars.size && coincidence == e.get(0).length) {
-                e.add(str)
+    for (a in 0 until s.length) {
+        var currentSubstring = ""
+        for (b in a until s.length) {
+            var currentChar = s.get(b)
+            if (!currentSubstring.contains(currentChar)) {
+                currentSubstring += currentChar
+            } else {
+                break
             }
         }
+        charSet.add(currentSubstring)
+    }
 
-        var isAdded = false
-        for (a in res) {
-            for (b in a) {
-                if (b == str) {
-                    isAdded = true
-                }
+    if (charSet.isNotEmpty()) {
+        for (set in charSet) {
+            if (set.length > previousCharSet.length) {
+                previousCharSet = set
             }
-        }
-        if (!isAdded) {
-            res.add(mutableListOf(str))
         }
     }
 
-    return res
+    return previousCharSet.length
 }
